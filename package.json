@@ -1,0 +1,51 @@
+{
+  "name": "@contractshark/maidenlane",
+  "description": "Setup for writing Solidity smart contracts",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@ethersproject/abstract-signer": "^5.0.6",
+    "@ethersproject/bignumber": "^5.0.8",
+    "chai": "^4.2.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "ethereum-waffle": "^3.2.0",
+    "ethers": "^5.0.17",
+    "fs-extra": "^9.0.1",
+    "husky": "^4.3.0",
+    "mocha": "^8.1.3",
+    "prettier": "^2.1.2",
+    "prettier-plugin-solidity": "^1.0.0-alpha.59",
+    "shelljs": "^0.8.4",
+    "solc": "0.5.17",
+    "solhint": "^3.2.1",
+    "solhint-plugin-prettier": "^0.0.5",
+    "solidity-coverage": "^0.7.11"
+  },
+  "files": [
+    "/contracts"
+  ],
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "smart-contracts",
+    "solidity"
+  ],
+  "license": "CC-0",
+  "publishConfig": {
+    "access": "private"
+  },
+  "scripts": {
+    "compile": "yarn truffle compile && yarn typechain --target truffle './build/**/*.json'",
+    "coverage": "yarn compile && yarn truffle run coverage",
+    "test": "yarn compile && yarn truffle test",
+    "truffle:coverage": "truffle run coverag coverage --solcoverjs ./.solcover.js --network coverage --temp artifacts --testfiles \"./test/**/*.ts\"",
+    "lint": "yarn lint lint:sol && yarn run lint:ts && yarn run prettier:list-different",
+    "lint:sol": "solhint --config ./.solhint.json --max-warnings 0 \"contracts/**/*.sol\"",
+    "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.ts .",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
+    "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\""
+  }
+}
