@@ -28,4 +28,4 @@ npm i -D @contractshark/hammerhead-mocks
 
 ## License 
 
-GPL-3.0
+Apache-2.0
