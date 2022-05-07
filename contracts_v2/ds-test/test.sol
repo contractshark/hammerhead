@@ -8,6 +8,7 @@ pragma solidity ^0.8.0;
 // solhint-disable var-name-mixedcase
 // solhint-disable quotes
 // solhint-disable state-visibility
+
 contract DSTest {
     event log                    (string);
     event logs                   (bytes);
